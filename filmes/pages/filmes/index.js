@@ -25,6 +25,7 @@ const index = (props) => {
             </Col>
           ))}
         </Row>
+
       </Pagina>
     </>
   )
@@ -38,6 +39,6 @@ export async function getServerSideProps(context) {
   const filmes = resultado.data.results
 
   return {
-    props: { filmes }, // will be passed to the page component as props
+    props: {filmes}, // will be passed to the page component as props
   }
 }
