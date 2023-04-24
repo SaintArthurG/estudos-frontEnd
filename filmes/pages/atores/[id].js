@@ -5,7 +5,7 @@ import { Card, Col, Row } from 'react-bootstrap'
 import Link from 'next/link'
 
 const DetalhesAct = (props) => {
-    const ator = props.infoAtor
+    const ator = props.infAtor
     const movies = props.movies.cast
     const img = props.img.profiles
     const series = props.series.cast
@@ -13,7 +13,7 @@ const DetalhesAct = (props) => {
         <Pagina>
             <Row>
                  <Col md={3}>
-                    <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500" + ator.profiles.file_path}/>
+                    <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500" + ator.profile_path}/>
                 </Col>
                 <Col md={9}>
                     <p><strong> Data de Nascimento: </strong> {ator.birthday} </p>
@@ -35,7 +35,7 @@ const DetalhesAct = (props) => {
 
                     {movies.map(mo =>(
                       <Col md={2}>  
-                      <Link href = {"/movies/" + mo.id}>
+                      <Link href = {"/filmes/" + mo.id}>
                         <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500" + mo.poster_path} title={mo.name} />
                       </Link>
                       </Col>
