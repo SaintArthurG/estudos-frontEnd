@@ -1,5 +1,5 @@
 import axios from "axios";
-import token from "@/configToken";
+import token from "../token";
 
 const apiFilmes = axios.create({
     baseURL: "https://api.themoviedb.org/3",

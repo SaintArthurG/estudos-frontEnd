@@ -2,6 +2,7 @@ import React from 'react'
 import { Pagina } from '@/components/Pagina'
 import apiFilmes from '../services/apiFilmes'
 import { Card, Col, Row } from 'react-bootstrap'
+import Link from 'next/link'
 
 const Detalhes = (props) => {
   return (
@@ -33,7 +34,9 @@ const Detalhes = (props) => {
          <Row>
           {props.atores.map(item => (
             <Col md={2} className="mb-3">
+              <Link href ={"/atores/" + item.id}>
              <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500" + item.profile_path} title={item.name} />
+             </Link>
             </Col>
           ))}
         </Row>
