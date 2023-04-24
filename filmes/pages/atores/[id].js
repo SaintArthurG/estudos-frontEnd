@@ -17,6 +17,7 @@ const DetalhesAct = (props) => {
                 </Col>
                 <Col md={9}>
                     <p><strong> Data de Nascimento: </strong> {ator.birthday} </p>
+                    <p><strong>Local de Nascimento: </strong>{ator.place_of_birth}</p>
                     <p><strong> Biografia: </strong> {ator.biography} </p>
                 </Col>
             </Row>
