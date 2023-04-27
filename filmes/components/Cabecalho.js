@@ -1,19 +1,27 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
 
 const Cabecalho = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">IESB</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+            <Nav.Link href="/">Home</Nav.Link>
+         <NavDropdown title="Filmes" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="/filmes/cartaz">Em cartaz</NavDropdown.Item>
+            <NavDropdown.Item href="/filmes/lancamento">Lançamentos</NavDropdown.Item>
+            <NavDropdown.Item href="/filmes/top">Top Rated</NavDropdown.Item>
+          </NavDropdown>
+         <NavDropdown title="Series" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="/filmes/cartaz">Em cartaz</NavDropdown.Item>
+            <NavDropdown.Item href="/filmes/lancamento">Lançamentos</NavDropdown.Item>
+            <NavDropdown.Item href="/filmes/top">Top Rated</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Container>
+    </Navbar >
     </>
   )
 }
