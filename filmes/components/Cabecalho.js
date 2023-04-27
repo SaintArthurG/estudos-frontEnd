@@ -10,11 +10,7 @@ const Cabecalho = () => {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
          <NavDropdown title="Filmes" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="/filmes/cartaz">Em cartaz</NavDropdown.Item>
-            <NavDropdown.Item href="/filmes/lancamento">Lançamentos</NavDropdown.Item>
-            <NavDropdown.Item href="/filmes/top">Top Rated</NavDropdown.Item>
-          </NavDropdown>
-         <NavDropdown title="Series" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="/filmes">Todos</NavDropdown.Item>
             <NavDropdown.Item href="/filmes/cartaz">Em cartaz</NavDropdown.Item>
             <NavDropdown.Item href="/filmes/lancamento">Lançamentos</NavDropdown.Item>
             <NavDropdown.Item href="/filmes/top">Top Rated</NavDropdown.Item>
