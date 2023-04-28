@@ -2,7 +2,7 @@ import { Pagina } from '@/components/Pagina'
 import React from 'react'
 import apiFilmes from '../services/apiFilmes'
 import { Card, Col, Row } from 'react-bootstrap'
-import Link from 'next/link'
+import Imagens from '@/components/Imagens'
 
 const DetalhesAct = (props) => {
     const ator = props.infAtor
@@ -22,27 +22,8 @@ const DetalhesAct = (props) => {
                 </Col>
             </Row>
 
-            <Row>
-                <h2> Imagens: </h2>
-                    {img.map(im =>(
-                      <Col md={2}>  
-                        <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500" + im.file_path}  />
-                      </Col>
-                    ))}
-            </Row>
-
-            <Row>
-                <h2> Filmes que atuou: </h2>
-
-                    {movies.map(mo =>(
-                      <Col md={2}>  
-                      <Link href = {"/filmes/" + mo.id}>
-                        <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500" + mo.poster_path} title={mo.name} />
-                      </Link>
-                      </Col>
-                    ))}
-            </Row>
-
+            <Imagens titulo="Imagens" lista={img} foto="file_path" size={1}/>
+            <Imagens titulo="Filmes em que atuou" lista={movies} foto="poster_path" size={2}/>
             <Row>
                 <h2> Séries que atuou: </h2>
 
