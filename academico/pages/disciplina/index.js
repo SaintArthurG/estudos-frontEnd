@@ -5,32 +5,32 @@ import { Table } from 'react-bootstrap'
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { BsTrashFill, BsPencil } from 'react-icons/bs'
 
-const Cursos = () => {
+const Disciplinas = () => {
 
-    const [cursos, setCursos] = useState([])
+    const [disciplinas, setDisciplinas] = useState([])
 
 
     useEffect(() => {
-        setCursos(getAll())
+        setDisciplinas(getAll())
     }, [])
 
     function getAll() {
-        return JSON.parse(window.localStorage.getItem('cursos')) || []
+        return JSON.parse(window.localStorage.getItem('disciplinas')) || []
     }
 
     function excluir(id) {
         if (confirm('Deseja realmente excluir o registro?')) {
             const itens = getAll()
             itens.splice(id, 1)
-            window.localStorage.setItem('cursos', JSON.stringify(itens))
-            setCursos(itens)
+            window.localStorage.setItem('disciplinas', JSON.stringify(itens))
+            setDisciplinas(itens)
         }
     }
 
     return (
-        <Pagina titulo="Cursos">
+        <Pagina titulo="Disciplinas">
 
-            <Link href="/cursos/form" className='mb-2 btn btn-primary'>
+            <Link href="/disciplinas/form" className='mb-2 btn btn-primary'>
                 <AiFillPlusCircle className='m-1' />
                 Novo
             </Link>
@@ -38,23 +38,20 @@ const Cursos = () => {
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
-                        <th>Deletar</th>
                         <th>Nome</th>
-                        <th>Duração</th>
-                        <th>Modalidade</th>
+                        <th>Curso</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {cursos.map((item, indice) => (
+                    {disciplinas.map((item, indice) => (
                         <tr key={indice}>
                             <td><BsTrashFill onClick={() => excluir(indice)} className='text-warning' />
-                            <Link href={'/cursos/' + indice}> 
+                            <Link href={'/disciplinas/' + indice}> 
                             <BsPencil/> 
                             </Link>
                             </td>
                             <td>{item.nome}</td>
-                            <td>{item.duracao}</td>
-                            <td>{item.modalidade}</td>
+                            <td>{item.curso}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -64,4 +61,4 @@ const Cursos = () => {
     )
 }
 
-export default Cursos
+export default Disciplinas
