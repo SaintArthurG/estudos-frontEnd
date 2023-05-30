@@ -1,4 +1,5 @@
 import Pagina from '@/components/Pagina'
+import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -14,6 +15,7 @@ const Forms = () => {
 
   function salvar(dados) {
     axios.post('/api/disciplinas', dados)
+    push('/disciplina')
   }
 
   return (
