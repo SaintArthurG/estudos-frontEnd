@@ -1,46 +1,41 @@
-import Pagina from '@/components/Pagina'
-import axios from 'axios';
+import Pagina from '@/Components/Pagina';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { BsTrashFill, BsPencil } from 'react-icons/bs'
 
-const Disciplinas = () => {
+const index = () => {
 
     const [disciplinas, setDisciplinas] = useState([])
 
 
     useEffect(() => {
-        getAll()
+        setDisciplinas(getAll())
         
     },[])
     
         function getAll(){
-        axios.get('/api/disciplinas').then(resultado =>{
-        setDisciplinas(resultado.data)
-    })
-        }
-        function excluir(id){
-            axios.delete('/api/disciplinas/' + id)
-        }
-
+        return JSON .parse(window.localStorage.getItem('disciplinas')) || []
+    }
     function excluir(id) {
         if (confirm('Deseja realmente excluir o registro?')) {
-            axios.delete('api/disciplinas/' + id)
-            getAll()
+           const itens = getAll()
+           itens.splice(id, 1)
+           window.localStorage.setItem('disciplinas', JSON.stringify(itens))
+           setDisciplinas(itens)
         }
     }
 
     return (
         <Pagina titulo="Disciplinas">
 
-            <Link href="/disciplina/form" className='mb-2 btn btn-primary'>
+            <Link href="/disciplina/formDisc" className='mb-2 btn btn-primary'>
                 <AiFillPlusCircle className='m-1' />
                 Novo
             </Link>
 
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="primary">
                 <thead>
                     <tr>
                         <th>Deletar</th>
@@ -49,10 +44,10 @@ const Disciplinas = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {disciplinas.map(item => (
-                        <tr key={item.id}>
-                            <td><BsTrashFill onClick={() => excluir(item.id)} className='text-warning' />
-                            <Link href={'/disciplina/' + item.id}> 
+                    {disciplinas.map((item, indice)=> (
+                        <tr key={indice}>
+                            <td><BsTrashFill onClick={() => excluir(indice)} className='text-warning' />
+                            <Link href={'/disciplina/' + indice}> 
                             <BsPencil/> 
                             </Link>
                             </td>
@@ -67,4 +62,4 @@ const Disciplinas = () => {
     )
 }
 
-export default Disciplinas
+export default index

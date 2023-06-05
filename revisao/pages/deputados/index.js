@@ -10,33 +10,43 @@ const index = (props) => {
         <>
             <Cabecalho />
             <Container>
-                <h1>Deputados: </h1>
-                <Row md={4}>
-                    {deputados.map(item => (
-                        <Col>
-                            <Card>
-                                <Link href={'/deputados/' + item.id}>
-                                    <Card.Img variant="top" src={item.urlFoto} />
-                                </Link>
-                                <Card.Body>
-                                    <Card.Title><p><strong>{item.nome}</strong></p></Card.Title>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
-            </Container >
-        </>
-    )
+                <Carousel>
+                    <Carousel.Item>
+                        <img
+                            className="d-block"
+                            src="https://www.camara.leg.br/internet/deputado/bandep/209787.jpg"
+                            alt="First slide"
+                        />
+                        <Carousel.Caption>
+                            <h1>Deputados: </h1>
+                            <Row md={4}>
+                                {deputados.map(item => (
+                                    <Col>
+                                        <Card>
+                                            <Link href={'/deputados/' + item.id}>
+                                                <Card.Img variant="top" src={item.urlFoto} />
+                                            </Link>
+                                            <Card.Body>
+                                                <Card.Title><p><strong>{item.nome}</strong></p></Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                ))}
+                            </Row>
+                        </Carousel.Caption>
+
+                    </Container >
+                </>
+                )
 }
 
-export default index
-export async function getServerSideProps(context) {
+                export default index
+                export async function getServerSideProps(context) {
 
     const resultado = await apiDeputados.get('/deputados')
-    const deputados = resultado.data.dados
+                const deputados = resultado.data.dados
 
-    return {
-        props: { deputados },
+                return {
+                    props: {deputados},
     }
 }
